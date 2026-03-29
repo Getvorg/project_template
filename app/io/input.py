@@ -35,4 +35,8 @@ def input_from_file_pandas(file_path):
     import pandas as pd
 
     data = pd.read_csv(file_path)
-    return data.to_string(index=False)
+
+    if data.empty:
+        return ""
+
+    return str(data["text"].iloc[0])
